@@ -12,7 +12,7 @@ class CommonModel {
     return json == null
         ? null
         : CommonModel(
-            icon: json['json'],
+            icon: json['icon'],
             title: json['title'],
             url: json['url'],
             statusBarColor: json['statusBarColor'],
