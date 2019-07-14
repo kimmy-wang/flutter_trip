@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_trip/dao/home_dao.dart';
 import 'package:flutter_trip/models/common_model.dart';
+import 'package:flutter_trip/models/grid_nav_model.dart';
 import 'package:flutter_trip/models/home_model.dart';
+import 'package:flutter_trip/widgets/grid_nav.dart';
 import 'package:flutter_trip/widgets/local_nav.dart';
 
 const APPBAR_SCROLL_OFFSET = 100;
@@ -22,6 +24,7 @@ class _HomePageState extends State<HomePage> {
 
   double appBarAlpha = 0;
   List<CommonModel> localNavList = [];
+  GridNavModel gridNavModel;
 
   @override
   void initState() {
@@ -65,6 +68,10 @@ class _HomePageState extends State<HomePage> {
                       padding: EdgeInsets.fromLTRB(7, 4, 7, 4),
                       child: LocalNav(localNavList: localNavList),
                     ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(7, 0, 7, 4),
+                      child: GridNav(gridNavModel: gridNavModel),
+                    ),
                     Container(
                       height: 800,
                       child: ListTile(
@@ -93,7 +100,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _onScroll(double offset) {
-    print(offset);
+//    print(offset);
     double alpha = offset / APPBAR_SCROLL_OFFSET;
     if (alpha < 0) {
       alpha = 0;
@@ -103,8 +110,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       appBarAlpha = alpha;
     });
-
-    print(alpha);
+//    print(alpha);
   }
 
   void _loadData() async {
@@ -122,9 +128,11 @@ class _HomePageState extends State<HomePage> {
       HomeModel model = await HomeDao.fetch();
       setState(() {
         localNavList = model.localNavList;
+        gridNavModel = model.gridNav;
       });
     } catch (e) {
       print(e);
     }
   }
+
 }
