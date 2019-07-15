@@ -5,8 +5,10 @@ import 'package:flutter_trip/dao/home_dao.dart';
 import 'package:flutter_trip/models/common_model.dart';
 import 'package:flutter_trip/models/grid_nav_model.dart';
 import 'package:flutter_trip/models/home_model.dart';
+import 'package:flutter_trip/models/sales_box_model.dart';
 import 'package:flutter_trip/widgets/grid_nav.dart';
 import 'package:flutter_trip/widgets/local_nav.dart';
+import 'package:flutter_trip/widgets/sales_box.dart';
 import 'package:flutter_trip/widgets/sub_nav.dart';
 
 const APPBAR_SCROLL_OFFSET = 100;
@@ -27,6 +29,7 @@ class _HomePageState extends State<HomePage> {
   List<CommonModel> localNavList = [];
   List<CommonModel> subNavList = [];
   GridNavModel gridNavModel;
+  SalesBoxModel salesBox;
 
   @override
   void initState() {
@@ -77,6 +80,10 @@ class _HomePageState extends State<HomePage> {
                     Padding(
                       padding: EdgeInsets.fromLTRB(7, 0, 7, 4),
                       child: SubNav(subNavList: subNavList,),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(7, 0, 7, 4),
+                      child: SalesBox(salesBox: salesBox,),
                     ),
                     Container(
                       height: 800,
@@ -136,6 +143,7 @@ class _HomePageState extends State<HomePage> {
         localNavList = model.localNavList;
         subNavList = model.subNavList;
         gridNavModel = model.gridNav;
+        salesBox = model.salesBox;
       });
     } catch (e) {
       print(e);
