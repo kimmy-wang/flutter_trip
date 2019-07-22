@@ -4,6 +4,14 @@ import 'package:flutter_trip/pages/mine_page.dart';
 import 'package:flutter_trip/pages/search_page.dart';
 import 'package:flutter_trip/pages/travel_page.dart';
 
+const TEXTS = ['首页', '搜索', '旅拍', '我的'];
+const ICONS = [
+  Icons.home,
+  Icons.search,
+  Icons.camera_alt,
+  Icons.account_circle
+];
+
 class TabNavigator extends StatefulWidget {
   @override
   _TabNavigatorState createState() => _TabNavigatorState();
@@ -25,7 +33,9 @@ class _TabNavigatorState extends State<TabNavigator> {
         physics: NeverScrollableScrollPhysics(),
         children: <Widget>[
           HomePage(),
-          SearchPage(),
+          SearchPage(
+            hideLeft: true,
+          ),
           TravelPage(),
           MinePage(),
         ],
@@ -39,64 +49,32 @@ class _TabNavigatorState extends State<TabNavigator> {
             });
           },
           type: BottomNavigationBarType.fixed,
-          items: [
-            BottomNavigationBarItem(
-                title: Text(
-                  '首页',
-                  style: TextStyle(
-                      color: _currentIndex == 0 ? _activeColor : _defaultColor),
-                ),
-                icon: Icon(
-                  Icons.home,
-                  color: _defaultColor,
-                ),
-                activeIcon: Icon(
-                  Icons.home,
-                  color: _activeColor,
-                )),
-            BottomNavigationBarItem(
-                title: Text(
-                  '搜索',
-                  style: TextStyle(
-                      color: _currentIndex == 1 ? _activeColor : _defaultColor),
-                ),
-                icon: Icon(
-                  Icons.search,
-                  color: _defaultColor,
-                ),
-                activeIcon: Icon(
-                  Icons.search,
-                  color: _activeColor,
-                )),
-            BottomNavigationBarItem(
-                title: Text(
-                  '旅拍',
-                  style: TextStyle(
-                      color: _currentIndex == 2 ? _activeColor : _defaultColor),
-                ),
-                icon: Icon(
-                  Icons.camera_alt,
-                  color: _defaultColor,
-                ),
-                activeIcon: Icon(
-                  Icons.camera_alt,
-                  color: _activeColor,
-                )),
-            BottomNavigationBarItem(
-                title: Text(
-                  '我的',
-                  style: TextStyle(
-                      color: _currentIndex == 3 ? _activeColor : _defaultColor),
-                ),
-                icon: Icon(
-                  Icons.account_circle,
-                  color: _defaultColor,
-                ),
-                activeIcon: Icon(
-                  Icons.account_circle,
-                  color: _activeColor,
-                )),
-          ]),
+          items: _items),
     );
+  }
+
+  List<BottomNavigationBarItem> get _items {
+    List<BottomNavigationBarItem> items = [];
+    TEXTS.asMap().forEach((int index, String text) {
+      items.add(_item(index, text));
+    });
+    return items;
+  }
+
+  BottomNavigationBarItem _item(int index, String text) {
+    return BottomNavigationBarItem(
+        title: Text(
+          text,
+          style: TextStyle(
+              color: _currentIndex == index ? _activeColor : _defaultColor),
+        ),
+        icon: Icon(
+          ICONS[index],
+          color: _defaultColor,
+        ),
+        activeIcon: Icon(
+          ICONS[index],
+          color: _activeColor,
+        ));
   }
 }
