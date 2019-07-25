@@ -76,9 +76,11 @@ class _SearchPageState extends State<SearchPage> {
 
     String url = widget.searchUrl + text;
     SearchDao.fetch(url, text).then((SearchModel model) {
-      setState(() {
-        searchModel = model;
-      });
+      if(model.keyword==keyword) {
+        setState(() {
+          searchModel = model;
+        });
+      }
     }).catchError((e) {
       print(e);
     });
