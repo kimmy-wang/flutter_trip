@@ -59,7 +59,6 @@ class Article {
   int likeCount;
   int commentCount;
   List<Urls> urls;
-  List<String> tags;
   List<Topics> topics;
   List<Pois> pois;
   String publishTime;
@@ -88,7 +87,6 @@ class Article {
         this.likeCount,
         this.commentCount,
         this.urls,
-        this.tags,
         this.topics,
         this.pois,
         this.publishTime,
@@ -126,12 +124,6 @@ class Article {
       urls = new List<Urls>();
       json['urls'].forEach((v) {
         urls.add(new Urls.fromJson(v));
-      });
-    }
-    if (json['tags'] != null) {
-      tags = new List<Null>();
-      json['tags'].forEach((v) {
-        tags.add(v);
       });
     }
     if (json['topics'] != null) {
@@ -179,9 +171,6 @@ class Article {
     data['commentCount'] = this.commentCount;
     if (this.urls != null) {
       data['urls'] = this.urls.map((v) => v.toJson()).toList();
-    }
-    if (this.tags != null) {
-      data['tags'] = this.tags.map((v) => v).toList();
     }
     if (this.topics != null) {
       data['topics'] = this.topics.map((v) => v.toJson()).toList();
@@ -273,8 +262,8 @@ class Images {
   int imageId;
   String dynamicUrl;
   String originalUrl;
-  int width;
-  int height;
+  double width;
+  double height;
   int mediaType;
   bool isWaterMarked;
 
