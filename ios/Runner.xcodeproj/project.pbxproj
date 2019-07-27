@@ -25,6 +25,8 @@
 		2ED76DD522EC73E100E0EF1C /* bds_easr_gramm.dat in Resources */ = {isa = PBXBuildFile; fileRef = 2ED76DCD22EC73E100E0EF1C /* bds_easr_gramm.dat */; };
 		2ED76DD622EC73E100E0EF1C /* bds_easr_wakeup_words.dat in Resources */ = {isa = PBXBuildFile; fileRef = 2ED76DCE22EC73E100E0EF1C /* bds_easr_wakeup_words.dat */; };
 		2ED76DD722EC73E100E0EF1C /* bds_easr_dnn_wakeup_model.dat in Resources */ = {isa = PBXBuildFile; fileRef = 2ED76DCF22EC73E100E0EF1C /* bds_easr_dnn_wakeup_model.dat */; };
+		2ED76DDA22EC75E900E0EF1C /* AsrManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED76DD922EC75E900E0EF1C /* AsrManager.m */; };
+		2ED76DE122EC881000E0EF1C /* AsrPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED76DE022EC881000E0EF1C /* AsrPlugin.m */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		3B80C3941E831B6300D905FE /* App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B80C3931E831B6300D905FE /* App.framework */; };
 		3B80C3951E831B6300D905FE /* App.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B80C3931E831B6300D905FE /* App.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -73,6 +75,13 @@
 		2ED76DCD22EC73E100E0EF1C /* bds_easr_gramm.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bds_easr_gramm.dat; sourceTree = "<group>"; };
 		2ED76DCE22EC73E100E0EF1C /* bds_easr_wakeup_words.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = bds_easr_wakeup_words.dat; sourceTree = "<group>"; };
 		2ED76DCF22EC73E100E0EF1C /* bds_easr_dnn_wakeup_model.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = bds_easr_dnn_wakeup_model.dat; sourceTree = "<group>"; };
+		2ED76DD822EC75E900E0EF1C /* AsrManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AsrManager.h; sourceTree = "<group>"; };
+		2ED76DD922EC75E900E0EF1C /* AsrManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AsrManager.m; sourceTree = "<group>"; };
+		2ED76DDC22EC7B6200E0EF1C /* BDSASRParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDSASRParameters.h; sourceTree = "<group>"; };
+		2ED76DDD22EC7B6200E0EF1C /* BDSEventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDSEventManager.h; sourceTree = "<group>"; };
+		2ED76DDE22EC7B6200E0EF1C /* BDSASRDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDSASRDefines.h; sourceTree = "<group>"; };
+		2ED76DDF22EC881000E0EF1C /* AsrPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AsrPlugin.h; sourceTree = "<group>"; };
+		2ED76DE022EC881000E0EF1C /* AsrPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AsrPlugin.m; sourceTree = "<group>"; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
 		3B80C3931E831B6300D905FE /* App.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = App.framework; path = Flutter/App.framework; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
@@ -133,9 +142,14 @@
 		2ED76D6522EC713100E0EF1C /* AsrPlugin */ = {
 			isa = PBXGroup;
 			children = (
+				2ED76DD822EC75E900E0EF1C /* AsrManager.h */,
+				2ED76DD922EC75E900E0EF1C /* AsrManager.m */,
+				2ED76DDB22EC7B6200E0EF1C /* Headers */,
 				2ED76DC722EC73E100E0EF1C /* BDSClientEASRResources */,
 				2ED76DC222EC73D900E0EF1C /* BDSClientLib */,
 				2ED76DC022EC73D000E0EF1C /* BDSClientResources */,
+				2ED76DDF22EC881000E0EF1C /* AsrPlugin.h */,
+				2ED76DE022EC881000E0EF1C /* AsrPlugin.m */,
 			);
 			path = AsrPlugin;
 			sourceTree = "<group>";
@@ -162,6 +176,16 @@
 				2ED76DCF22EC73E100E0EF1C /* bds_easr_dnn_wakeup_model.dat */,
 			);
 			path = BDSClientEASRResources;
+			sourceTree = "<group>";
+		};
+		2ED76DDB22EC7B6200E0EF1C /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				2ED76DDC22EC7B6200E0EF1C /* BDSASRParameters.h */,
+				2ED76DDD22EC7B6200E0EF1C /* BDSEventManager.h */,
+				2ED76DDE22EC7B6200E0EF1C /* BDSASRDefines.h */,
+			);
+			path = Headers;
 			sourceTree = "<group>";
 		};
 		35DF2155A441DAE6533FB075 /* Frameworks */ = {
@@ -393,9 +417,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ED76DDA22EC75E900E0EF1C /* AsrManager.m in Sources */,
 				978B8F6F1D3862AE00F588F7 /* AppDelegate.m in Sources */,
 				97C146F31CF9000F007C117D /* main.m in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
+				2ED76DE122EC881000E0EF1C /* AsrPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
