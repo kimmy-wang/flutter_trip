@@ -138,7 +138,9 @@ class _WebViewState extends State<WebView> {
                 child: Center(
                   child: Text(
                     widget.title ?? '',
-                    style: TextStyle(color: backButtonColor, fontSize: 20),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(color: backButtonColor, fontSize: 18),
                   ),
                 ))
           ],

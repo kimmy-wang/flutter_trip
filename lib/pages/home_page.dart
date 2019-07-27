@@ -7,6 +7,7 @@ import 'package:flutter_trip/models/grid_nav_model.dart';
 import 'package:flutter_trip/models/home_model.dart';
 import 'package:flutter_trip/models/sales_box_model.dart';
 import 'package:flutter_trip/pages/search_page.dart';
+import 'package:flutter_trip/utils/navigator_util.dart';
 import 'package:flutter_trip/widgets/grid_nav.dart';
 import 'package:flutter_trip/widgets/loading.dart';
 import 'package:flutter_trip/widgets/local_nav.dart';
@@ -204,14 +205,11 @@ class _HomePageState extends State<HomePage> {
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => WebView(
-                            url: bannerList[index].url,
-                            title: bannerList[index].title,
-                            hideAppBar: bannerList[index].hideAppBar,
-                          )));
+              NavigatorUtil.push(context, WebView(
+                url: bannerList[index].url,
+                title: bannerList[index].title,
+                hideAppBar: bannerList[index].hideAppBar,
+              ));
             },
             child: Image.network(
               bannerList[index].icon,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_trip/dao/travel_dao.dart';
 import 'package:flutter_trip/models/travel_model.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:flutter_trip/utils/navigator_util.dart';
 import 'package:flutter_trip/widgets/loading.dart';
 import 'package:flutter_trip/widgets/webview.dart';
 
@@ -127,13 +128,12 @@ class _TravelItem extends StatelessWidget {
         onTap: () {
           if (travelItem.article.urls != null &&
               travelItem.article.urls.length > 0) {
-            Navigator.push(
+            NavigatorUtil.push(
                 context,
-                MaterialPageRoute(
-                    builder: (BuildContext context) => WebView(
-                          url: travelItem.article.urls[0].h5Url,
-                          title: travelItem.article.articleTitle,
-                        )));
+                WebView(
+                  url: travelItem.article.urls[0].h5Url,
+                  title: travelItem.article.articleTitle,
+                ));
           }
         },
         child: Card(
