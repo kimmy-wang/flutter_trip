@@ -47,6 +47,7 @@ public class AsrManager {
      * @param params
      */
     public void start(Map<String, Object> params) {
+        Log.i(TAG, "开启录音");
         if (!isInited) {
             throw new RuntimeException("release() was called");
         }

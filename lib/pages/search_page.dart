@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_trip/dao/search_dao.dart';
 import 'package:flutter_trip/models/search_model.dart';
+import 'package:flutter_trip/pages/speak_page.dart';
 import 'package:flutter_trip/utils/navigator_util.dart';
 import 'package:flutter_trip/widgets/search.dart';
 import 'package:flutter_trip/widgets/webview.dart';
@@ -106,6 +107,7 @@ class _SearchPageState extends State<SearchPage> {
               hideLeft: widget.hideLeft,
               defaultText: widget.keyword,
               hint: widget.hint,
+              speakClick: _jumpToSpeak,
               leftButtonClick: () {
                 Navigator.pop(context);
               },
@@ -214,5 +216,9 @@ class _SearchPageState extends State<SearchPage> {
       }
     }
     return spans;
+  }
+
+  void _jumpToSpeak() {
+    NavigatorUtil.push(context, SpeakPage());
   }
 }

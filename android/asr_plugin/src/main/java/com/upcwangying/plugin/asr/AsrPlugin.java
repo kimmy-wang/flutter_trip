@@ -59,7 +59,7 @@ public class AsrPlugin implements MethodChannel.MethodCallHandler {
         }
 
         if (getAsrManager() != null) {
-            getAsrManager().start(methodCall.arguments instanceof Math ? (Map) methodCall.arguments : null);
+            getAsrManager().start(methodCall.arguments instanceof Map ? (Map) methodCall.arguments : null);
         } else {
             Log.e(TAG, "Ignored start, current asrManager is null.");
             result.error("Ignored start, current asrManager is null.", null, null);
