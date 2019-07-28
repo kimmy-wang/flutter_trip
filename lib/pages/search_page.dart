@@ -44,6 +44,14 @@ class _SearchPageState extends State<SearchPage> {
   SearchModel searchModel;
 
   @override
+  void initState() {
+    if (widget.keyword != null) {
+      _onTextChange(widget.keyword);
+    }
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
@@ -78,7 +86,7 @@ class _SearchPageState extends State<SearchPage> {
 
     String url = widget.searchUrl + text;
     SearchDao.fetch(url, text).then((SearchModel model) {
-      if(model.keyword==keyword) {
+      if (model.keyword == keyword) {
         setState(() {
           searchModel = model;
         });
@@ -124,11 +132,13 @@ class _SearchPageState extends State<SearchPage> {
     SearchItem item = searchModel.data[position];
     return GestureDetector(
       onTap: () {
-        NavigatorUtil.push(context, WebView(
-          url: item.url,
-          title: item.word,
-          hideAppBar: false,
-        ));
+        NavigatorUtil.push(
+            context,
+            WebView(
+              url: item.url,
+              title: item.word,
+              hideAppBar: false,
+            ));
       },
       child: Container(
         padding: EdgeInsets.all(10),
@@ -204,7 +214,7 @@ class _SearchPageState extends State<SearchPage> {
     TextStyle keywordStyle = TextStyle(fontSize: 16, color: Colors.orange);
     for (int i = 0, length = arr.length; i < length; i++) {
       String val = arr[i];
-      if(i == 0 && (val == null || val.length == 0)) {
+      if (i == 0 && (val == null || val.length == 0)) {
         spans.add(TextSpan(text: keyword, style: keywordStyle));
       }
       if (i > 0 && (i + 1) <= length) {
